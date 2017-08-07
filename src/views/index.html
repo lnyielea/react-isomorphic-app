@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>index</title>
+  {%for cssFile in __app.css%}
+    <link rel="stylesheet" href="/dist/{{cssFile}}">
+  {%endfor%}
+</head>
+<body>
+  <div id="app">{% autoescape false %}{{__html}}{% endautoescape %}</div>
+  <script>
+    var _fileMap = {% autoescape false %}{{__outFileMap}};{% endautoescape %}
+  </script>
+  <script src="/dist/{{__manifest.js[0]}}"></script>
+  <script src="/dist/{{__vendors.js[0]}}"></script>
+  {%for jsFile in __mod.js%}
+    <script src="/dist/{{jsFile}}"></script>
+  {%endfor%}
+  <script src="/dist/{{__app.js[0]}}"></script>
+</body>
+</html>

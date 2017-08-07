@@ -1,0 +1,14 @@
+{
+  "presets": [["es2015"], "stage-0", "react"],
+  "plugins": [
+    "react-hot-loader/babel",
+    "dual-import"
+  ],
+  "env": {
+    "build": {
+      "plugins": [
+        ["css-modules-transform", {"extensions": [".css", ".scss", ".less"]}]
+      ]
+    }
+  }
+}
