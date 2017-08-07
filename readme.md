@@ -6,6 +6,18 @@ Use babel-plugin-css-modules-transform add css-modules on server side through ba
 
 
 
+# base on
+
+react v15.6.1
+
+react-router-dom v4.1.1
+
+webpack v3.4.1
+
+express v4.15.3
+
+# npm script
+
 npm run dev will start dev server.
 
 npm run dev:debug will start dev server with debug.

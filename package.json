@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@39.108.140.214:sign.git"
+    "url": "https://github.com/lnyielea/react-isomorphic-app.git"
   },
   "author": "lnyi",
   "license": "ISC",
