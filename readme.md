@@ -18,14 +18,14 @@ express v4.15.3
 
 # npm script
 
-npm run dev will start dev server.
+`npm run dev` will start dev server.
 
-npm run dev:debug will start dev server with debug.
+`npm run dev:debug` will start dev server with debug.
 
-npm run build will exec "npm run build:server" and "npm run build:client"
+`npm run build` will exec "npm run build:server" and "npm run build:client"
 
-npm run build:server will build server code to es5.
+`npm run build:server` will build server code to es5.
 
-npm run build:client will build client code to build/static/dist dir. need exec "nom run build:server" to build webpack.config file.
+`npm run build:client` will build client code to build/static/dist dir. need exec "nom run build:server" to build webpack.config file.
 
-npm run prod will start production env server.
+`npm run prod` will start production env server.
