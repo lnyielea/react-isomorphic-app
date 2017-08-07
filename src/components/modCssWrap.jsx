@@ -3,7 +3,7 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class ModCssWrap extends Component {
   render() {
@@ -37,4 +37,7 @@ export default class ModCssWrap extends Component {
       return this.props.children;
     }
   }
+}
+ModCssWrap.propTypes = {
+  resourcePath: PropTypes.string.isRequired
 }

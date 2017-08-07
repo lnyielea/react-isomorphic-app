@@ -3,7 +3,7 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import ModCssWrap from './modCssWrap'
 
 export default class LazyLoad extends Component {
@@ -40,4 +40,7 @@ export default class LazyLoad extends Component {
       return <div>加载中</div>;
     }
   }
+}
+LazyLoad.propTypes = {
+  resourcePath: PropTypes.string.isRequired
 }
