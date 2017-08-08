@@ -34,8 +34,8 @@ export default class Routes extends Component {
           <Switch>
             {
               routesConfig.map((config) => {
-                let path,         // 请求路径
-                    resourcePath  // 资源路径
+                let path,         // request path
+                    resourcePath  // resource path
                     ;
 
                 if(typeof config == "object") {
@@ -47,21 +47,20 @@ export default class Routes extends Component {
                   resourcePath = config;
                 }
                 const render = (props) => {
-                  // 当前请求路径
+                  // current request path
                   const currentPathname = this.props.resourcePath;
                   let Child, Mod;
-                  // 服务端，直接引入模块
+                  // server side, direct include module component
                   if(typeof System == "undefined") {
                     Mod = require(`./pages/${resourcePath}`)["default"];
                     Child = Mod;
                   }
-                  // 客户端
+                  // client side
                   else {
-                    // 如果存在当前请求路径，并且等于当前渲染路径
+                    // if exists current path and equal resource path
                     if(currentPathname && currentPathname == resourcePath) {
-                      // 当首次载入页面，当前页面对应的组件会通过mod属性传入
                       Mod = this.props.mod;
-                      // 在开发模式时，mod属性为空。直接调用懒加载组件
+                      // in development, mod will be null. so use LazyLoad load component
                       if(!Mod) {
                         Mod = LazyLoad;
                       }

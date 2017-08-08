@@ -1,5 +1,4 @@
 /**
- * 加载模块对应的css文件
  * @author lnyi <lnyielea@gmail.com>
  */
 
@@ -11,7 +10,7 @@ export default class ModCssWrap extends Component {
 
     let resources;
     /**
-     * 根据是否客户端选择fileMap的加载方式
+     * client from webpack definePlugin
      */
     if(typeof client == "undefined") {
       resources = require("../../build/static/fileMap")[`/src/pages/${resourcePath}.jsx`]

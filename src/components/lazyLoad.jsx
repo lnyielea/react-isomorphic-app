@@ -1,5 +1,4 @@
 /**
- * 懒加载组件
  * @author lnyi <lnyielea@gmail.com>
  */
 

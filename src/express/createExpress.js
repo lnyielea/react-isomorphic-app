@@ -19,14 +19,14 @@ function createExpress(o) {
   o = o || {};
   middlewares = o.middlewares;
 
-  // express 主要配置
+  // express main options
   masterBind(app, o);
   if(app.get("env") == "development") {
-    // react-hot 配置
+    // react-hot
     reactHotBind(app, o);
   }
   app.use(renderWrap);
-  // 绑定路由
+  // bind page router
   pageRoutesBind(app, o);
   if(middlewares) {
     if(!(middlewares instanceof Array)) {
@@ -42,7 +42,7 @@ function createExpress(o) {
 function createServer(app, o) {
   app.use(express.static(o.staticPath));
 
-  // 500错误处理
+  // 500 error
   if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
@@ -63,7 +63,7 @@ function createServer(app, o) {
     });
   });
 
-  // 404错误处理
+  // 404 error
   app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;

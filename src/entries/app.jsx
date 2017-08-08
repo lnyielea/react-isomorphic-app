@@ -1,5 +1,4 @@
 /**
- * app入口文件
  * @author lnyi <lnyielea@gmail.com>
  */
 import React from 'react'
@@ -8,7 +7,7 @@ import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 import Routes from '../routes'
 
-const resourcePath = location.pathname.substring(1) || "/";
+const resourcePath = location.pathname.substring(1) || "/index";
 
 function renderApp(mod, Main) {
   const dom = <AppContainer><BrowserRouter><Main resourcePath={resourcePath} mod={mod} /></BrowserRouter></AppContainer>;
@@ -17,7 +16,7 @@ function renderApp(mod, Main) {
 
 /**
  *
- * 开发环境，首次加载为了热更新不考虑同构。一定程度上会导致抖动
+ * development env, first load don't isomorphic for hot load, mey jitter.
  *
  */
 if(process.env.NODE_ENV == "development") {
@@ -40,7 +39,7 @@ if(process.env.NODE_ENV == "development") {
 
 /**
  *
- * 生产环境，预先加载当前路由对应模块，然后加载到路由完成同构
+ * production env, preload cur router module and render to app
  *
  */
 if(process.env.NODE_ENV == "production") {
