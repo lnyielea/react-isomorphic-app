@@ -2,9 +2,11 @@ A react ismmorphic app.  Compatibility with SPA(Single Page App) and MPA(Multi P
 
 Use webpack-file-map-plugin extract dependency and load css file from page chunk.
 
-Use babel-plugin-css-modules-transform add css-modules on server side through babel build
+Use babel-plugin-css-modules-transform add css-modules on server side through babel build.
 
+express controller hot reload.
 
+use NODE_PATH require module. same node side and webpack.
 
 # base on
 
