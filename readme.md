@@ -4,6 +4,8 @@ Use webpack-file-map-plugin extract dependency and load css file from page chunk
 
 Use babel-plugin-css-modules-transform add css-modules on server side through babel build
 
+Node side hot reload
+
 
 
 # base on
