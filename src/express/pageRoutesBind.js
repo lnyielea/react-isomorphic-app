@@ -1,24 +1,25 @@
 /**
  * @author lnyi <lnyielea@gmail.com>
  */
+
 import pageRoutes from "../routesConfig"
-export default function(app, o) {
+
+export default function(router, bindedControllerCache) {
   pageRoutes.map((config) => {
     let routePath;
 
     if(typeof config == "object") {
-      routePath = config.path;
+      routePath = `/${config.path}`;
     }
     else {
       routePath = `/${config}`;
     }
-    try {
-      // include controller file
-      app.get(routePath, require('../controller/${routePath}')["default"])
+    if(routePath == "//") {
+      routePath = "/";
     }
-    catch(e) {
-      // on error, nonexistence controller file, render default page
-      app.get(routePath, (req, res) => {
+    // if can't have controller, bind default;
+    if(!bindedControllerCache[routePath]) {
+      router.get(routePath, (req, res) => {
         res.render("index.html");
       })
     }

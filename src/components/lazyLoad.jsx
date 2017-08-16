@@ -2,8 +2,9 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import ModCssWrap from './modCssWrap'
+import PropTypes from 'prop-types';
 
 export default class LazyLoad extends Component {
   constructor(props) {

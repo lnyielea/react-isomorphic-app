@@ -51,7 +51,13 @@ const webpackConfig = {
     ],
     resolve: {
         extensions: ['.js','.json','.es6','.jsx'],
-
     }
 }
+const files = glob.sync(path.join(__dirname, "../*"));
+const alias = {};
+files.map((file) => {
+    const key = file.replace(path.join(__dirname, "../"), "");
+    alias[key] = file;
+});
+webpackConfig.resolve.alias = alias;
 export default webpackConfig;

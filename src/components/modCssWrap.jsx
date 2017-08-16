@@ -2,7 +2,8 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 export default class ModCssWrap extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class ModCssWrap extends Component {
      * client from webpack definePlugin
      */
     if(typeof client == "undefined") {
-      resources = require("../../build/static/fileMap")[`/src/pages/${resourcePath}.jsx`]
+      resources = require("../static/fileMap")[`/src/pages/${resourcePath}.jsx`]
     }
     else {
       resources = _fileMap[`/src/pages/${resourcePath}.jsx`]

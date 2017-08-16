@@ -7,8 +7,10 @@ import Debug from 'debug'
 import http from 'http'
 import masterBind from './masterBind'
 import reactHotBind from './reactHotBind'
-import pageRoutesBind from './pageRoutesBind'
 import renderWrap from './renderWrap'
+import addQueryString from './addQueryString'
+import addJsonHelper from './addJsonHelper'
+import loadControllers from './loadControllers'
 
 const debug = Debug("web:server");
 
@@ -21,22 +23,35 @@ function createExpress(o) {
 
   // express main options
   masterBind(app, o);
-  if(app.get("env") == "development") {
-    // react-hot
-    reactHotBind(app, o);
-  }
   app.use(renderWrap);
   // bind page router
-  pageRoutesBind(app, o);
-  if(middlewares) {
-    if(!(middlewares instanceof Array)) {
-      middlewares = [middlewares];
+  addQueryString(app);
+  addJsonHelper(app);
+  if(process.env.NODE_ENV == "development") {
+    /**
+     * on development, the app.use for prevent express cache router.
+     */
+    app.use((req, res, next) => {
+      loadControllers((router) => {
+        router(req, res, next);
+      });
+    });
+    if(app.get("env") == "development") {
+      // react-hot
+      reactHotBind(app, o);
     }
-    middlewares.forEach((middleware) => {
-      app.use(middleware);
+    createServer(app, o);
+  }
+  else {
+    loadControllers((router) => {
+      app.use(router);
+      app.get("*", (req, res) => {
+        console.log(req.url);
+        res.render("index.html");
+      });
+      createServer(app, o);
     });
   }
-  createServer(app, o);
 };
 
 function createServer(app, o) {
