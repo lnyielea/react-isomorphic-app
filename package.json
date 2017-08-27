@@ -1,6 +1,6 @@
 {
   "name": "react-isomorphic-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-isomorphic-app, support SPA and MPA",
   "main": "main.js",
   "scripts": {
