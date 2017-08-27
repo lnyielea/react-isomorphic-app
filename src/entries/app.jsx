@@ -10,9 +10,13 @@ import Routes from '../routes';
 const resourcePath = location.pathname.substring(1) || '/index';
 
 function renderApp(mod, Main) {
-  const dom = <AppContainer><BrowserRouter><Main resourcePath={resourcePath} mod={mod} /></BrowserRouter></AppContainer>;
+  const dom = (
+    <AppContainer>
+      <BrowserRouter><Main resourcePath={resourcePath} mod={mod} /></BrowserRouter>
+    </AppContainer>
+  );
   ReactDOM.render((dom), document.getElementById('app'));
-};
+}
 
 /**
  *

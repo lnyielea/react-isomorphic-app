@@ -2,7 +2,6 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import webpack from 'webpack';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import webpackConfig from './webpack.config.common.babel';
 

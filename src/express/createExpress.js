@@ -2,7 +2,6 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 import express from 'express';
-import path from 'path';
 import Debug from 'debug';
 import http from 'http';
 import masterBind from './masterBind';
