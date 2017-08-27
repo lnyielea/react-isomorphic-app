@@ -32,6 +32,9 @@ export default (fn) => {
               delete require.cache[file];
             }
             /* eslint-disable global-require, import/no-dynamic-require */
+            /**
+             * load once on server start
+             */
             const controllers = require(file).default;
             /* eslint-enable global-require, import/no-dynamic-require */
             controllers.map((controller) => {

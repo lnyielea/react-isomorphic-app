@@ -9,6 +9,7 @@ import ModCssWrap from './components/modCssWrap';
 import routesConfig from './routesConfig';
 import mainStyle from './pages/main.less';
 
+const modCache = {};
 export default class Routes extends Component {
   constructor(props) {
     super(props);
@@ -58,8 +59,13 @@ export default class Routes extends Component {
                     // server side, direct include module component
                     if (typeof System === 'undefined') {
                       /* eslint-disable global-require, import/no-dynamic-require */
-                      Mod = require(`./pages/${resourcePath}`).default;
-                      /* eslint-disable global-require, import/no-dynamic-require */
+                      if (modCache[resourcePath]) {
+                        Mod = modCache[resourcePath];
+                      } else {
+                        Mod = require(`./pages/${resourcePath}`).default;
+                        modCache[resourcePath] = Mod;
+                      }
+                      /* eslint-enable global-require, import/no-dynamic-require */
                       Child = Mod;
                     } else if (currentPathname && currentPathname === resourcePath) {
                       // client side
