@@ -1,8 +1,8 @@
 /**
  * @author lnyi <lnyielea@gmail.com>
  */
-import path from 'path'
-import webpack from 'webpack'
+import path from 'path';
+import webpack from 'webpack';
 
 const vendors = [
   'react',

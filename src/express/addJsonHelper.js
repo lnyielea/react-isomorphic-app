@@ -2,8 +2,6 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
-import url from 'url'
-
 export default (app) => {
   function getJsonHelper(res) {
     return {
@@ -12,26 +10,33 @@ export default (app) => {
           code,
           message,
           data
-        }
+        };
         res.end(JSON.stringify(jsonData));
       },
 
       success(data) {
-        this.out(1, "", data);
+        this.out(1, '', data);
       },
 
       error(code, message) {
-        if(arguments.length == 1) {
-          message = code;
-          code = 0;
+        let codeValue;
+        let messageValue;
+
+        codeValue = code;
+        messageValue = message;
+        if (arguments.length === 1) {
+          messageValue = codeValue;
+          codeValue = 0;
         }
-        this.out(code, message);
+        this.out(codeValue, messageValue);
       }
+    };
+  }
+  app.use(
+    (req, res, next) => {
+      const jsonHelper = getJsonHelper(res);
+      res.json = jsonHelper;
+      next();
     }
-  };
-  app.use((req, res, next) => {
-    const jsonHelper = getJsonHelper(res);
-    res.json = jsonHelper;
-    next();
-  });
-}
+  );
+};

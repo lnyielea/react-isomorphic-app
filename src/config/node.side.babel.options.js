@@ -1,9 +1,9 @@
 module.exports = {
   plugins: [
     [
-      require("babel-plugin-css-modules-transform").default,
+      require('babel-plugin-css-modules-transform').default,
       {
-        "extensions": [".css", ".scss", ".less"]
+        extensions: ['.css', '.scss', '.less']
       }
     ]
   ]

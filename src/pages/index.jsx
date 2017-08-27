@@ -1,9 +1,9 @@
 import React from 'react'
 import Base from './base/base'
-const style = require('./index.less');
+import style from './index.less'
 
 export default class Index extends Base {
-  render() {
+  render () {
     return <div className={style.index}>index1</div>
   }
 }

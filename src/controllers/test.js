@@ -2,12 +2,12 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
- export default [
+export default [
   {
-    method: "get",
-    path: "/test",
+    method: 'get',
+    path: '/test',
     handler(req, res) {
-      res.json.success("request success");
+      res.json.success('request success');
     }
   }
- ]
+]

@@ -1,22 +1,23 @@
 const chokidar = require('chokidar');
-const babelConfig = require("./src/config/node.side.babel.options");
-const path = require("path");
+const path = require('path');
+const babelConfig = require('./src/config/node.side.babel.options');
+const rootFile = process.argv[2];
 
-chokidar.watch("./src").on("all", watchHandle);
-chokidar.watch("./data").on("all", watchHandle);
 function watchHandle(e, filePath) {
-  filePath = path.join(__dirname, filePath);
-  if(require.cache[filePath]) {
-    if(filePath.indexOf("server.js") != -1) {
+  const rootFilePath = path.join(__dirname, `${rootFile}.js`);
+  const changedFilePath = path.join(__dirname, filePath);
+  if (require.cache[changedFilePath]) {
+    if (rootFilePath === changedFilePath) {
       return;
     }
-    delete require.cache[filePath];
+    delete require.cache[changedFilePath];
     try {
-      require(filePath);
-    }
-    catch(e) {}
-    console.log(`reload: ${filePath}`);
+      require(changedFilePath);
+    } catch (e) {}
+    console.log(`reload: ${changedFilePath}`);
   }
-};
-require("babel-register")(babelConfig);
-require(`./${process.argv[2]}`);
+}
+chokidar.watch('./src').on('all', watchHandle);
+chokidar.watch('./data').on('all', watchHandle);
+require('babel-register')(babelConfig);
+require(`./${rootFile}`);
