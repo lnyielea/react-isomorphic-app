@@ -2,6 +2,7 @@
  * @author lnyi <lnyielea@gmail.com>
  */
 
+import webpack from 'webpack';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import webpackConfig from './webpack.common.config.babel';
 
@@ -32,5 +33,12 @@ webpackConfig.module.rules.push({
   })
 });
 webpackConfig.plugins.push(new ExtractCssChunks({ filename: '[name].[contenthash:6].css' }));
+webpackConfig.plugins.push(
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  })
+);
 
 export default webpackConfig;

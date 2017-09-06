@@ -8,9 +8,10 @@
     "start": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node babelRegister ./src/server",
     "start:debug": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node --debug babelRegister ./src/server",
     "deploy": "npm run deploy:server&&npm run deploy:client",
-    "deploy:client": "cross-env NODE_ENV=production NODE_PATH=./build webpack --config ./config/webpack.prod.config.babel.js",
     "deploy:server": "cross-env NODE_ENV=production NODE_PATH=./build gulp build",
+    "deploy:client": "cross-env NODE_ENV=production NODE_PATH=./build webpack --config ./config/webpack.prod.config.babel.js",
     "prod": "cross-env NODE_ENV=production NODE_PATH=./build && node build/server",
+    "analyzer": "cross-env NODE_ENV=production NODE_PATH=./build webpack --config ./config/webpack.prod.config.babel.js --json>pack.json && webpack-bundle-analyzer ./pack.json ./build/static/dist",
     "lint": "eslint --env node ./src"
   },
   "repository": {
@@ -23,31 +24,32 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-plugin-css-modules-transform": "^1.2.7",
+    "babel-register": "^6.24.1",
     "body-parser": "^1.17.2",
+    "chokidar": "^1.7.0",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.8",
     "express": "^4.15.3",
     "extend": "^3.0.1",
     "extends": "0.0.4",
+    "glob": "^7.1.2",
     "jade": "^1.11.0",
     "less": "^2.7.2",
     "moment": "^2.18.1",
     "morgan": "^1.8.2",
-    "glob": "^7.1.2",
     "prop-types": "^15.5.10",
-    "webpack": "^3.4.1",
-    "webpack-dev-middleware": "^1.11.0",
-    "webpack-hot-middleware": "^2.18.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "babel-plugin-css-modules-transform": "^1.2.7",
     "serve-favicon": "^2.4.3",
-    "chokidar": "^1.7.0",
-    "babel-register": "^6.24.1",
-    "swig-minifier": "^0.4.4-b"
+    "swig-minifier": "^0.4.4-b",
+    "webpack": "^3.4.1",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-file-map-plugin": "^1.0.6",
+    "webpack-hot-middleware": "^2.18.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -84,7 +86,6 @@
     "url-loader": "^0.5.9",
     "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dev-server": "^2.6.1",
-    "webpack-file-map-plugin": "^1.0.3",
     "webpack-hot-server-middleware": "^0.1.0"
   }
 }
