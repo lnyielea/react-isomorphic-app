@@ -1,6 +1,6 @@
 {
   "name": "react-isomorphic-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lnyi",
   "description": "react-isomorphic-app, support SPA and MPA",
   "main": "main.js",
@@ -20,7 +20,6 @@
   "bin": {
     "create-react-isomorphic-app": "./index.js"
   },
-  "author": "lnyi",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
