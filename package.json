@@ -1,15 +1,16 @@
 {
   "name": "react-isomorphic-app",
   "version": "1.0.0",
+  "author": "lnyi",
   "description": "react-isomorphic-app, support SPA and MPA",
   "main": "main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node babelRegister ./src/server",
-    "dev:debug": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node --debug babelRegister ./src/server",
-    "build": "npm run build:server&&npm run build:client",
-    "build:client": "cross-env NODE_ENV=production webpack --config ./build/config/webpack.config.prod.babel.js",
-    "build:server": "cross-env NODE_ENV=production gulp build",
-    "prod": "cross-env NODE_ENV=production NODE_PATH=./build node build/server",
+    "start": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node babelRegister ./src/server",
+    "start:debug": "cross-env NODE_ENV=development BABEL_ENV=node NODE_PATH=./src node --debug babelRegister ./src/server",
+    "deploy": "npm run deploy:server&&npm run deploy:client",
+    "deploy:client": "cross-env NODE_ENV=production NODE_PATH=./build webpack --config ./config/webpack.prod.config.babel.js",
+    "deploy:server": "cross-env NODE_ENV=production NODE_PATH=./build gulp build",
+    "prod": "cross-env NODE_ENV=production NODE_PATH=./build && node build/server",
     "lint": "eslint --env node ./src"
   },
   "repository": {

@@ -6,7 +6,7 @@ Use babel-plugin-css-modules-transform add css-modules on server side through ba
 
 express controller hot reload.
 
-use NODE_PATH require module. same node side and webpack.
+use NODE_PATH require module. for same path from node side and webpack.
 
 # base on
 
@@ -20,14 +20,14 @@ express v4.15.3
 
 # npm script
 
-`npm run dev` will start dev server.
+`npm start` will start dev server.
 
-`npm run dev:debug` will start dev server with debug.
+`npm run start:debug` will start dev server with debug.
 
-`npm run build` will exec "npm run build:server" and "npm run build:client"
+`npm run deploy` will exec "npm run deploy:server" and "npm run deploy:client"
 
-`npm run build:server` will build server code to es5.
+`npm run deploy:server` will build server code to es5.
 
-`npm run build:client` will build client code to build/static/dist dir. need exec "nom run build:server" to build webpack.config file.
+`npm run deploy:client` will build client code to build/static/dist dir. need exec "nom run build:server" to build webpack.config file.
 
 `npm run prod` will start production env server.

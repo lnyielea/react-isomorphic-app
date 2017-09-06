@@ -3,7 +3,7 @@
  */
 
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
-import webpackConfig from './webpack.config.common.babel';
+import webpackConfig from './webpack.common.config.babel';
 
 webpackConfig.entry.app = [
   './src/entries/app.jsx',

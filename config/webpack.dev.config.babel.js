@@ -5,13 +5,13 @@
 import webpack from 'webpack';
 // import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
-import webpackConfig from './webpack.config.common.babel';
+import webpackConfig from './webpack.common.config.babel';
 
 webpackConfig.entry.app = [
   'babel-polyfill',
   'react-hot-loader/patch',
   'webpack-hot-middleware/client',
-  path.join(__dirname, '../entries/app.jsx'),
+  path.join(__dirname, '../src/entries/app.jsx'),
 ];
 webpackConfig.output.filename = '[name].js';
 webpackConfig.module.rules.push({

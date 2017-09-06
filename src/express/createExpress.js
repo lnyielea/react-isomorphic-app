@@ -5,7 +5,6 @@ import express from 'express';
 import Debug from 'debug';
 import http from 'http';
 import masterBind from './masterBind';
-import reactHotBind from './reactHotBind';
 import renderWrap from './renderWrap';
 import addQueryString from './addQueryString';
 import addJsonHelper from './addJsonHelper';
@@ -33,10 +32,13 @@ function normalizePort(val) {
   return false;
 }
 
+function bindStatic(app, o) {
+  app.use(express.static(o.staticPath));
+}
+
 function createServer(app, o) {
   const port = normalizePort(o.port || '3000');
   let server;
-  app.use(express.static(o.staticPath));
 
   /**
    * Event listener for HTTP server 'error' event.
@@ -157,11 +159,13 @@ function createExpress(o = {}) {
     );
     if (app.get('env') === 'development') {
       // react-hot
-      reactHotBind(app, o);
+      require('./reactHotBind').default(app, o); // eslint-disable-line
     }
+    bindStatic(app, o);
     createServer(app, o);
   } else {
     loadControllers((router) => {
+      bindStatic(app, o);
       app.use(router);
       createServer(app, o);
     });

@@ -4,8 +4,10 @@
 import path from 'path';
 import webpack from 'webpack';
 import glob from 'glob';
+/* eslint-disable import/no-extraneous-dependencies,import/no-unresolved,import/extensions */
 import FileMapPlugin from 'webpack-file-map-plugin';
-// import FileMapPlugin from '../../webpack-file-map-plugin/index'
+// import FileMapPlugin from '../../webpack-file-map-plugin/index';
+/* eslint-enable import/no-extraneous-dependencies,import/no-unresolved,import/extensions */
 
 function join(d) {
   return path.join(__dirname, d);
@@ -15,7 +17,7 @@ const webpackConfig = {
     vendors: ['react', 'react-dom', 'react-router-dom', 'moment', 'extends']
   },
   output: {
-    path: join('../../build/static/dist/'),
+    path: join('../build/static/dist/'),
     publicPath: '/dist/'
   },
   module: {
@@ -43,7 +45,7 @@ const webpackConfig = {
       },
       client: true,
     }),
-    new FileMapPlugin({ output: join('../static/fileMap.json') })
+    new FileMapPlugin({ output: join(`../${process.env.NODE_PATH}/static/fileMap.json`) })
   ],
   resolve: {
     extensions: ['.js', '.json', '.es6', '.jsx'],

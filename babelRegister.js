@@ -1,6 +1,6 @@
 const chokidar = require('chokidar');
 const path = require('path');
-const babelConfig = require('./src/config/node.side.babel.options');
+const babelConfig = require('./config/node.side.babel.options');
 
 const rootFile = process.argv[2];
 
@@ -21,6 +21,7 @@ function watchHandle(e, filePath) {
 }
 chokidar.watch('./src').on('all', watchHandle);
 chokidar.watch('./data').on('all', watchHandle);
-require(`./${rootFile}`);
 require('babel-register')(babelConfig);
+
+require(`./${rootFile}`);
 /* eslint-enable global-require, import/no-dynamic-require */
